@@ -22,9 +22,12 @@ services:
       context: "${CL_BASE_DIR:-../../}/docker/postgresql"
       dockerfile: "./Dockerfile"
       args:
-        POSTGRES_VERSION: 15.2-alpine
+        #POSTGRES_VERSION: 15.2-alpine
+        POSTGRES_VERSION: pg17
     ports:
       - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
     environment:
       POSTGRES_USER: "postgres"
       POSTGRES_PASSWORD: "postgres"
@@ -191,3 +194,6 @@ services:
       - "9200:9200"
     networks:
       - cl_net_overlay
+
+volumes:
+  postgres_data:

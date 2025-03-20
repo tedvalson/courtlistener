@@ -46,7 +46,8 @@ FROM build-base AS python-base
 WORKDIR $PYSETUP_PATH
 
 COPY poetry.lock pyproject.toml ./
-RUN poetry install --no-root $(test "$BUILD_ENV" != "dev" && echo "--without dev")
+#RUN poetry install --no-root $(test "$BUILD_ENV" != "dev" && echo "--without dev")
+RUN poetry install --no-root --all-extras
 
 COPY . /opt/courtlistener
 

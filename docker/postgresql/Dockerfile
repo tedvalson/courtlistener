@@ -1,5 +1,6 @@
 ARG POSTGRES_VERSION
-FROM postgres:${POSTGRES_VERSION}
+#FROM postgres:${POSTGRES_VERSION}
+FROM pgvector/pgvector:${POSTGRES_VERSION}
 
 # Create the 'etc/ssl/private' directory
 RUN mkdir -p /etc/ssl/private
